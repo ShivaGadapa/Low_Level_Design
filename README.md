@@ -1,5 +1,5 @@
 # Low_Level_Design
-The Repository is solely for the helping users to makes users to design  
+The Repository is solely for the helping users to design  
 systems in more Reliable, Scalable & Robust manner
 1) Handling Edge Conditions (DLL calls, 3rd Party Library Calls)
 2) Low Level System Design Scenario's
