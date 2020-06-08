@@ -1,0 +1,54 @@
+1) Join(): Method helps the main()/Main Thread to wait for the the Child thread to complete
+the execution task and Main Thread gets back the control 
+
+Example:
+1) void FuncCount(int Value)
+   {
+      while(Value > 0)
+	  {
+		cout << "Value =" << Value;
+		Value--;
+	  }
+	}
+	
+	int main()
+	{
+		Thread t1(FuncCount, 10);
+		cout << "Main Function Called" << endl;
+		t1.Join();
+		cout << "Rest of the Execution" << endl;
+		return 0;
+	}
+
+2) What happens in the above code is that, The main() method calls the Thread T1 object,
+the thread start executing and the control is back to main() and execute the t1.Join() Method
+and wait for the thread to completes its execution
+
+3) OutPut:
+   Main Function Called
+   10 9 8 7 6 5 4 3 2 1
+   Rest of the Execution
+   
+Note:
+1) You cannot call join() Method twice for same Thread Object, as its already joined in main thread, the main thread
+likey could get terminated abnormally upon calling Join() method for the second time.
+
+Example:
+1) void FuncCount(int Value)
+   {
+      while(Value > 0)
+	  {
+		cout << "Value =" << Value <<endl;
+		Value--;
+	  }
+	}
+	
+	int main()
+	{
+		Thread t1(FuncCount, 10);
+		cout << "Main Function Called" << endl;
+		t1.Join();
+		t1.Join();  // ERROR - Program Terminates Abnormally
+		cout << "Rest of the Execution" << endl;
+		return 0;
+	}
