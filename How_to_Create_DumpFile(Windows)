@@ -1,0 +1,38 @@
+Steps to Create Dump file from the Debug-Diag Tool:
+
+Step-1:  
+Download the 32-bit(x86) version of DebugDiag tool from the follow link 
+https://www.microsoft.com/en-us/download/details.aspx?id=26798
+
+Step-2:
+Install the DebugDiag tool on the Problem server and then later Run the tool
+
+Step-3: (Configuring the Dump file Path & Contents)
+a) Upon Opening the DebugDiag tool, Goto  “Tool” option in the Menu bar
+b) Select “Options & Settings”
+c) Under “Folders & Search Paths”  Goto “Manual User Dump”  Choose the path of any folder where you want the .dmp file to be created 
+Ex: C:\SRILDump\Temp
+d) Now, Goto  Perferances Tab, Leave default selected option, along with it 
+Select  “Include source & line information” (If its Unchecked) and also 
+Select  “Record call stack immediately” options
+e) Click ‘OK’
+
+Step-4: (Monitoring & Dump file creation) 
+f) Goto  Rules Tab  Click on “Add Rule” Button
+h) Select  “Native (Non-.NET) Memory and Handle Leak option”
+I) Click Next  Select “SRILWinserv” Process from the list of processes and Click  “Next”
+j) Click  “Configure” Button under User dump Generation section
+k) Now, Configure the Memory Threshold limit for the SRILWinServ process, 
+Select  “Generate User Dump when Private Bytes reach”  Let the value be 800MB
+l) Select  “and Add Additional Logs”, set value  800MB, click  “Save & Close”
+m) Now, Select  “Maximum number of user dumps created by this rule”, Enter value  “2”
+o) Select  “Auto Unload Leak Track when Completed”
+p) Click  “Next”
+q) Choose the User dump Location as mentioned above ‘Ex: C:\SRILDump\Temp’
+r) Now, the rule is successfully created and Select  “Activate the rule now” and Click  “Finish” Button
+s) Upon clicking Finish button, there will be a popup “Monitoring the Leaks for SRILWinServ.exe process”, click Ok
+t) Now the Debug Diagnostics Tool starts monitoring the SRILWinServ Process
+u)  You should be seeing “Status”  Tracking and “UserDump Count”  0(Initially), when the UserDump Count reaches to “2” and “Status”  Completed
+v) Please share the Created dump files
+
+
